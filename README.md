@@ -1,2 +1,2 @@
 # MobileAppTesting-BiometricAuth
-Biometric Authentication in the mobile app is designed to streamline the login process while enhancing security.
+Tested biometric authentication functionality across multiple Android and iOS devices, including fallback handling and OS-level biometric lockouts.
