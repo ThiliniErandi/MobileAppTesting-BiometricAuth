@@ -60,10 +60,6 @@ This repository documents a comprehensive manual QA process for mobile biometric
 - **Operating System Versions**  
    - Test on a range of OS versions for both Android and iOS.
 
-### 7. **Security & Privacy**  
-- **Data Privacy**  
-   - Ensure biometric data is not exposed through the app. Confirm that authentication is handled securely.
-
 ### 8. **Performance Testing**  
 - **Response Time**  
    - Measure the time it takes from launching the app to successfully authenticating via biometric methods.
@@ -76,7 +72,6 @@ This repository documents a comprehensive manual QA process for mobile biometric
 ## 🛠️ Tools & Platforms Used
 - Android & iOS Devices
 - Manual Test Execution
-- Biometric Authentication Libraries
 
 ---
 
