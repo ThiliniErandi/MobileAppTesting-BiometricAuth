@@ -1,4 +1,4 @@
-# 📲 Biometric Authentication Testing – Manual QA Coverage
+# 📲 Biometric Authentication Testing
 
 This repository provides a comprehensive set of manual testing scenarios for **Biometric Authentication** in mobile apps. It ensures smooth functionality, security, and usability across different platforms, devices, and configurations.
 
