@@ -1,103 +1,90 @@
-📲 Mobile Biometric Authentication Manual Testing
+# 📲 Mobile Biometric Authentication Manual Testing
+
 This repository documents a comprehensive manual QA process for mobile biometric authentication features across Android and iOS platforms. The testing process ensures high reliability, functionality, and security for the biometric login experience, with a focus on different device states, user types, and authentication scenarios.
 
-🧪 Test Coverage Overview
-1. Settings Screen
-Biometric Availability
+---
 
-Ensure the biometric toggle option appears in the settings list if the biometric is available on the device.
+## 🧪 Test Coverage Overview
 
-If biometric authentication is not supported or enabled on the device, the toggle should be hidden.
+### 1. **Settings Screen**  
+- **Biometric Availability**  
+   - Ensure the biometric toggle option appears in the settings list if the biometric is available on the device.
+   - If biometric authentication is not supported or enabled on the device, the toggle should be hidden.
+  
+- **Biometric Options**  
+   - iOS: Touch ID, Face ID  
+   - Android: Fingerprint, Face ID, or both.
 
-Biometric Options
+- **UI/UX Testing**  
+   - Check the correct visibility of the biometric toggle and ensure appropriate labels are displayed.
+   - Validate success or failure messages when enabling or disabling biometric authentication.
+  
+### 2. **App Lifecycle Events**  
+- **Install/Uninstall/Reinstall**  
+   - Test biometric settings persistence after app install/uninstall/reinstall.
+  
+- **App Updates**  
+   - Ensure that the app properly maintains the biometric settings during upgrades.
 
-iOS: Touch ID, Face ID
+- **Permission Changes**  
+   - Test biometric authentication behavior when the user changes device-level biometric permissions.
 
-Android: Fingerprint, Face ID, or both.
+### 3. **User Authentication & Session Management**  
+- **Logged-in Users**  
+   - Test biometric login for users who are logged in with valid credentials.
 
-UI/UX Testing
+- **Auto-logout Scenarios**  
+   - Test scenarios where the user is auto-logged out due to session expiration or manual logout.
 
-Check the correct visibility of the biometric toggle and ensure appropriate labels are displayed.
+- **Password Reset & Re-enable Biometric Auth**  
+   - Verify if biometric authentication is enabled after a password reset, if applicable.
 
-Validate success or failure messages when enabling or disabling biometric authentication.
+### 4. **Multi-Device and Multi-User Testing**  
+- **Multiple Devices**  
+   - Ensure a user can use biometric authentication across multiple devices.
 
-2. App Lifecycle Events
-Install/Uninstall/Reinstall
+- **Shared Devices**  
+   - Test biometric authentication on shared devices used by multiple users.
 
-Test biometric settings persistence after app install/uninstall/reinstall.
+### 5. **Notification Behavior**  
+- **Login Prompt**  
+   - Verify the biometric prompt appears upon app launch or after session expiration.
 
-App Updates
+- **Fallback Behavior**  
+   - Ensure users can revert to credential-based login if biometric authentication fails or is canceled.
 
-Ensure that the app properly maintains the biometric settings during upgrades.
+### 6. **Device Compatibility**  
+- **iOS & Android**  
+   - Ensure compatibility across a variety of devices, including those with fingerprint and Face ID support.
 
-Permission Changes
+- **Operating System Versions**  
+   - Test on a range of OS versions for both Android and iOS.
 
-Test biometric authentication behavior when the user changes device-level biometric permissions.
+### 7. **Security & Privacy**  
+- **Data Privacy**  
+   - Ensure biometric data is not exposed through the app. Confirm that authentication is handled securely.
 
-3. User Authentication & Session Management
-Logged-in Users
+### 8. **Performance Testing**  
+- **Response Time**  
+   - Measure the time it takes from launching the app to successfully authenticating via biometric methods.
 
-Test biometric login for users who are logged in with valid credentials.
+- **Battery & Memory Usage**  
+   - Evaluate the app’s impact on battery and memory during repeated biometric authentications.
 
-Auto-logout Scenarios
+---
 
-Test scenarios where the user is auto-logged out due to session expiration or manual logout.
+## 🛠️ Tools & Platforms Used
+- Android & iOS Devices
+- Manual Test Execution
+- Biometric Authentication Libraries
 
-Password Reset & Re-enable Biometric Auth
+---
 
-Verify if biometric authentication is enabled after a password reset, if applicable.
-
-4. Multi-Device and Multi-User Testing
-Multiple Devices
-
-Ensure a user can use biometric authentication across multiple devices.
-
-Shared Devices
-
-Test biometric authentication on shared devices used by multiple users.
-
-5. Notification Behavior
-Login Prompt
-
-Verify the biometric prompt appears upon app launch or after session expiration.
-
-Fallback Behavior
-
-Ensure users can revert to credential-based login if biometric authentication fails or is canceled.
-
-6. Device Compatibility
-iOS & Android
-
-Ensure compatibility across a variety of devices, including those with fingerprint and Face ID support.
-
-Operating System Versions
-
-Test on a range of OS versions for both Android and iOS.
-
-7. Security & Privacy
-Data Privacy
-
-Ensure biometric data is not exposed through the app. Confirm that authentication is handled securely.
-
-8. Performance Testing
-Response Time
-
-Measure the time it takes from launching the app to successfully authenticating via biometric methods.
-
-Battery & Memory Usage
-
-Evaluate the app’s impact on battery and memory during repeated biometric authentications.
-
-🛠️ Tools & Platforms Used
-Android & iOS Devices
-
-Manual Test Execution
-
-Biometric Authentication Libraries
-
-📎 Notes
+## 📎 Notes
 This repository focuses on general QA practices for biometric authentication. No confidential, proprietary, or company-specific data is included. All test cases and observations aim to showcase typical QA methodologies and testing techniques.
 
-👩‍💻 Author
-Thilini Kumarawadu
+---
+
+👩‍💻 Author  
+**Thilini Kumarawadu**  
 QA Engineer | Mobile App Testing | Passionate about edge-case exploration 🚀
