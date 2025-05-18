@@ -1,137 +1,103 @@
-# 📲 Biometric Authentication Testing
+📲 Mobile Biometric Authentication Manual Testing
+This repository documents a comprehensive manual QA process for mobile biometric authentication features across Android and iOS platforms. The testing process ensures high reliability, functionality, and security for the biometric login experience, with a focus on different device states, user types, and authentication scenarios.
 
-This repository provides a comprehensive set of manual testing scenarios for **Biometric Authentication** in mobile apps. It ensures smooth functionality, security, and usability across different platforms, devices, and configurations.
+🧪 Test Coverage Overview
+1. Settings Screen
+Biometric Availability
 
-## 🔐 1. Authentication & Session States
+Ensure the biometric toggle option appears in the settings list if the biometric is available on the device.
 
-### Key Scenarios:
-- Validate biometric authentication behavior for:
-  - **Active/logged-in users**
-  - **Auto-logged-out sessions** due to:
-    - Token expiration (time-based or manual DB invalidation)
-    - Password reset
-    - Admin actions (e.g., account disabled, purged, or terminated)
-  - **Manually logged-out users**
-- Confirm biometric behavior across various authentication methods:
-  - **LDAP / SAML / OAuth** (e.g., Google Sign-In)
-- Test for:
-  - Biometric login functionality before and after session termination
-  - Password expiry, two-factor authentication, and lockout scenarios
+If biometric authentication is not supported or enabled on the device, the toggle should be hidden.
 
----
+Biometric Options
 
-## 🔄 2. App Lifecycle & Installation
+iOS: Touch ID, Face ID
 
-### Key Scenarios:
-- **App uninstall/reinstall** (with and without login)
-- **Auto and manual app updates**
-- **Biometric authentication behavior** with/without user permissions
-- Behavior when biometric data is **blocked/unrecognized** at OS level
+Android: Fingerprint, Face ID, or both.
 
----
+UI/UX Testing
 
-## 📱 3. Multi-Device & Multi-User Scenarios
+Check the correct visibility of the biometric toggle and ensure appropriate labels are displayed.
 
-### Key Scenarios:
-- Same user logging in across **multiple devices**
-- **Read-status synchronization** across devices after biometric authentication
-- **Shared device** usage scenarios with multiple user accounts
+Validate success or failure messages when enabling or disabling biometric authentication.
 
----
+2. App Lifecycle Events
+Install/Uninstall/Reinstall
 
-## 🧭 4. Authentication Behavior & UI
+Test biometric settings persistence after app install/uninstall/reinstall.
 
-### Key Scenarios:
-- **Deep linking**: Verify navigation after tapping a biometric prompt
-- Background/foreground behavior after logout or biometric failure
-- **Offline behavior**: Confirm biometric login works without internet if the session is active
-- **Biometric prompt appearance** during app launch (foreground/background)
-- **“Do Not Disturb” mode**: Ensure no interference with biometric prompts
-- **Error and success messages**: Display proper feedback on enabling/disabling biometric auth
+App Updates
 
----
+Ensure that the app properly maintains the biometric settings during upgrades.
 
-## 🌐 5. Cross-Platform & Version Compatibility
+Permission Changes
 
-### Key Scenarios:
-- Test across **Android (v6 to v14)** and **iOS (v12 to v18)**
-- Test on **various device brands** (e.g., Samsung, Pixel, iPhone 11, iPhone 13+)
-- **App version compatibility** (e.g., 7.15.x onward)
-- Cross-platform compatibility for **fingerprint** (Android) and **Face ID** (iOS)
+Test biometric authentication behavior when the user changes device-level biometric permissions.
 
----
+3. User Authentication & Session Management
+Logged-in Users
 
-## ⚙️ 6. Device States & Settings
+Test biometric login for users who are logged in with valid credentials.
 
-### Key Scenarios:
-- **Foreground**, **background**, **suspended**, **terminated** app states
-- **Cache/data clearing**: Ensure persistence of biometric data and settings
-- **Font scaling** and **accessibility settings**: Validate UI visibility
-- **Power-saving/low battery modes**: Ensure authentication doesn’t fail due to power-saving
-- **Notification permission changes** and **system settings**: Test biometric impact on overall device security
+Auto-logout Scenarios
 
----
+Test scenarios where the user is auto-logged out due to session expiration or manual logout.
 
-## 🚀 7. Performance & Load Testing
+Password Reset & Re-enable Biometric Auth
 
-### Key Scenarios:
-- **Concurrent biometric login attempts**: Verify system handles load
-- **Biometric response time**: Ensure prompt times are ≤1.5s
-- **Battery impact**: Check power consumption with repeated biometric logins
-- **Memory usage & leaks**: Monitor for memory increases during continuous biometric prompts
+Verify if biometric authentication is enabled after a password reset, if applicable.
 
----
+4. Multi-Device and Multi-User Testing
+Multiple Devices
 
-## 🔒 8. Security & Privacy
+Ensure a user can use biometric authentication across multiple devices.
 
-### Key Scenarios:
-- Verify **biometric data security** during transmission and storage
-- **Sensitive data** protection: Ensure no personal information is exposed
-- Test **privacy settings** and ensure proper handling of user data
+Shared Devices
 
----
+Test biometric authentication on shared devices used by multiple users.
 
-## 📊 9. Analytics & Reporting
+5. Notification Behavior
+Login Prompt
 
-### Key Scenarios:
-- Measure **success rates** of biometric logins
-- Track **user engagement** via biometric authentication
-- Report on **session token expiration** and authentication failure scenarios
+Verify the biometric prompt appears upon app launch or after session expiration.
 
----
+Fallback Behavior
 
-## 🧪 10. Edge Case & Config-Based Testing
+Ensure users can revert to credential-based login if biometric authentication fails or is canceled.
 
-### Key Scenarios:
-- **Expired license**: Ensure app behavior when license expires
-- **Biometric data corruption**: Simulate issues with biometric data (e.g., removed/re-enrolled biometrics)
-- **Biometric settings toggle**: Test rapid enabling/disabling without data corruption
-- **Error handling**: Validate fallback to credential login after biometric failure
+6. Device Compatibility
+iOS & Android
 
----
+Ensure compatibility across a variety of devices, including those with fingerprint and Face ID support.
 
-## ⏱️ 11. Session Token Management
+Operating System Versions
 
-### Key Scenarios:
-- Verify behavior after **manual token invalidation**
-- Validate that users can **re-authenticate** with biometrics after session expiration
+Test on a range of OS versions for both Android and iOS.
 
----
+7. Security & Privacy
+Data Privacy
 
-## 🧾 Disclaimer
+Ensure biometric data is not exposed through the app. Confirm that authentication is handled securely.
 
-This project is based on general QA practices and simulated scenarios. No proprietary information, code, or client-specific configurations are shared in this repository.
+8. Performance Testing
+Response Time
 
----
+Measure the time it takes from launching the app to successfully authenticating via biometric methods.
 
-## 🌟 Contributions
+Battery & Memory Usage
 
-If you have any improvements, suggestions, or would like to contribute to this testing repository, please feel free to fork and submit a pull request.
+Evaluate the app’s impact on battery and memory during repeated biometric authentications.
 
----
+🛠️ Tools & Platforms Used
+Android & iOS Devices
 
-## 🛠 Setup & Installation
+Manual Test Execution
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/biometric-auth-testing.git
+Biometric Authentication Libraries
+
+📎 Notes
+This repository focuses on general QA practices for biometric authentication. No confidential, proprietary, or company-specific data is included. All test cases and observations aim to showcase typical QA methodologies and testing techniques.
+
+👩‍💻 Author
+Thilini Kumarawadu
+QA Engineer | Mobile App Testing | Passionate about edge-case exploration 🚀
