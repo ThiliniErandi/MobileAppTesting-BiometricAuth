@@ -1,132 +1,137 @@
-📲 Biometric Authentication Testing – Manual QA Coverage Summary
+# 📲 Biometric Authentication Testing – Manual QA Coverage
 
-This repository outlines comprehensive manual testing scenarios conducted on biometric authentication features across mobile apps, focusing on fingerprint and face recognition authentication methods. The aim is to ensure reliable, secure, and user-friendly biometric authentication across platforms and device types.
+This repository provides a comprehensive set of manual testing scenarios for **Biometric Authentication** in mobile apps. It ensures smooth functionality, security, and usability across different platforms, devices, and configurations.
 
-🔐 1. Authentication & Session States
+## 🔐 1. Authentication & Session States
 
-Validate biometric authentication behavior for:
+### Key Scenarios:
+- Validate biometric authentication behavior for:
+  - **Active/logged-in users**
+  - **Auto-logged-out sessions** due to:
+    - Token expiration (time-based or manual DB invalidation)
+    - Password reset
+    - Admin actions (e.g., account disabled, purged, or terminated)
+  - **Manually logged-out users**
+- Confirm biometric behavior across various authentication methods:
+  - **LDAP / SAML / OAuth** (e.g., Google Sign-In)
+- Test for:
+  - Biometric login functionality before and after session termination
+  - Password expiry, two-factor authentication, and lockout scenarios
 
-Active/logged-in users
+---
 
-Auto-logged-out sessions due to:
+## 🔄 2. App Lifecycle & Installation
 
-Token expiration (time-based/manual DB invalidation)
+### Key Scenarios:
+- **App uninstall/reinstall** (with and without login)
+- **Auto and manual app updates**
+- **Biometric authentication behavior** with/without user permissions
+- Behavior when biometric data is **blocked/unrecognized** at OS level
 
-Password reset
+---
 
-Admin actions (e.g., account disabled, purged, or terminated)
+## 📱 3. Multi-Device & Multi-User Scenarios
 
-Manually logged-out users
+### Key Scenarios:
+- Same user logging in across **multiple devices**
+- **Read-status synchronization** across devices after biometric authentication
+- **Shared device** usage scenarios with multiple user accounts
 
-Confirm biometric functionality across different authentication methods:
+---
 
-LDAP / SAML / OAuth (e.g., Google Sign-In)
+## 🧭 4. Authentication Behavior & UI
 
-Test scenarios for:
+### Key Scenarios:
+- **Deep linking**: Verify navigation after tapping a biometric prompt
+- Background/foreground behavior after logout or biometric failure
+- **Offline behavior**: Confirm biometric login works without internet if the session is active
+- **Biometric prompt appearance** during app launch (foreground/background)
+- **“Do Not Disturb” mode**: Ensure no interference with biometric prompts
+- **Error and success messages**: Display proper feedback on enabling/disabling biometric auth
 
-Biometric login functionality before and after session termination
+---
 
-Password expiry, two-factor authentication, and lockout scenarios
+## 🌐 5. Cross-Platform & Version Compatibility
 
-🔄 2. App Lifecycle & Installation
+### Key Scenarios:
+- Test across **Android (v6 to v14)** and **iOS (v12 to v18)**
+- Test on **various device brands** (e.g., Samsung, Pixel, iPhone 11, iPhone 13+)
+- **App version compatibility** (e.g., 7.15.x onward)
+- Cross-platform compatibility for **fingerprint** (Android) and **Face ID** (iOS)
 
-App uninstall/reinstall (with and without login)
+---
 
-Auto and manual app updates
+## ⚙️ 6. Device States & Settings
 
-Biometric authentication behavior with/without user permissions
+### Key Scenarios:
+- **Foreground**, **background**, **suspended**, **terminated** app states
+- **Cache/data clearing**: Ensure persistence of biometric data and settings
+- **Font scaling** and **accessibility settings**: Validate UI visibility
+- **Power-saving/low battery modes**: Ensure authentication doesn’t fail due to power-saving
+- **Notification permission changes** and **system settings**: Test biometric impact on overall device security
 
-Behavior when biometric data is blocked or unrecognized at OS level
+---
 
-📱 3. Multi-Device & Multi-User Scenarios
+## 🚀 7. Performance & Load Testing
 
-Same user logging in across multiple devices
+### Key Scenarios:
+- **Concurrent biometric login attempts**: Verify system handles load
+- **Biometric response time**: Ensure prompt times are ≤1.5s
+- **Battery impact**: Check power consumption with repeated biometric logins
+- **Memory usage & leaks**: Monitor for memory increases during continuous biometric prompts
 
-Read-status synchronization between devices after biometric authentication
+---
 
-Shared device scenarios with different user accounts using biometric authentication
+## 🔒 8. Security & Privacy
 
-🧭 4. Authentication Behavior & UI
+### Key Scenarios:
+- Verify **biometric data security** during transmission and storage
+- **Sensitive data** protection: Ensure no personal information is exposed
+- Test **privacy settings** and ensure proper handling of user data
 
-Deep linking: Ensure correct navigation after tapping a biometric authentication prompt
+---
 
-Background/foreground behavior after logout or biometric failure
+## 📊 9. Analytics & Reporting
 
-Offline handling: Confirm biometric login still works if session is active, even without internet connection
+### Key Scenarios:
+- Measure **success rates** of biometric logins
+- Track **user engagement** via biometric authentication
+- Report on **session token expiration** and authentication failure scenarios
 
-Biometric prompt appearance during app launch in both background and foreground states
+---
 
-“Do Not Disturb” mode: Ensure the prompt doesn’t interfere or fail in this state
+## 🧪 10. Edge Case & Config-Based Testing
 
-Error and success messages: Proper UI feedback on enabling/disabling biometric auth
+### Key Scenarios:
+- **Expired license**: Ensure app behavior when license expires
+- **Biometric data corruption**: Simulate issues with biometric data (e.g., removed/re-enrolled biometrics)
+- **Biometric settings toggle**: Test rapid enabling/disabling without data corruption
+- **Error handling**: Validate fallback to credential login after biometric failure
 
-🌐 5. Cross-Platform & Version Compatibility
+---
 
-Android (v6 to v14) and iOS (v12 to v18) coverage
+## ⏱️ 11. Session Token Management
 
-Different device brands (e.g., Samsung, Pixel, iPhone X, iPhone 13+)
+### Key Scenarios:
+- Verify behavior after **manual token invalidation**
+- Validate that users can **re-authenticate** with biometrics after session expiration
 
-Compatibility with app versions (e.g., 7.15.x onward)
+---
 
-Cross-OS compatibility: Ensure biometric auth works across platforms (e.g., fingerprint on Android, Face ID on iOS)
-
-⚙️ 6. Device States & Settings
-
-Foreground, background, suspended, terminated app states
-
-Cache/data clearing: Ensure biometric data and settings persist after clearing app data
-
-Font scaling and accessibility settings: Validate readability of biometric-related UI elements
-
-Power-saving/low battery modes: Confirm biometric auth doesn’t fail in power-saving mode
-
-Notification permission changes and system settings: Validate the effect of biometric settings on overall device security
-
-🚀 7. Performance & Load Testing
-
-Biometric authentication under load: Test performance with concurrent biometric authentication attempts
-
-Biometric data response time: Measure prompt times from launch to successful authentication (should be ≤1.5s)
-
-Battery impact: Check power consumption with repeated biometric login cycles
-
-Memory usage & leaks: Monitor app memory usage during continuous biometric prompts
-
-🔒 8. Security & Privacy
-
-Ensure biometric data is securely transmitted and stored
-
-Verify that sensitive data is not exposed during authentication processes
-
-Ensure privacy settings and user data protection while using biometric authentication
-
-📊 9. Analytics & Reporting
-
-Track and analyze biometric login success rates
-
-Measure user engagement through biometric login usage
-
-Report on token lifetime and authentication failure scenarios
-
-🧪 10. Edge Case & Config-Based Testing
-
-Test biometric authentication behavior with:
-
-Expired license: Verify app behavior after license expiry
-
-Biometric data corruption: Simulate data issues (e.g., removed/re-enrolled biometrics)
-
-Biometric settings toggle: Test rapid toggling of enabling/disabling biometric auth
-
-Error handling: Validate fallback to credential login after biometric failure
-
-⏱️ 11. Session Token Management
-
-Test the expiration behavior of authentication tokens (with/without biometrics)
-
-Validate that users can re-authenticate with biometrics after manual token invalidation
-
-🧾 Disclaimer
+## 🧾 Disclaimer
 
 This project is based on general QA practices and simulated scenarios. No proprietary information, code, or client-specific configurations are shared in this repository.
 
+---
+
+## 🌟 Contributions
+
+If you have any improvements, suggestions, or would like to contribute to this testing repository, please feel free to fork and submit a pull request.
+
+---
+
+## 🛠 Setup & Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/biometric-auth-testing.git
